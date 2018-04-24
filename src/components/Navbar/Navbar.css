@@ -1,0 +1,29 @@
+.navbar {
+    position: fixed;
+    min-height: 70px;
+    width: 100%;
+    text-align: center;
+    font-size: calc(10px + 14 * (100vw - 320px)/ 800);
+    box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.navbar a {
+    display: inline-block;
+    padding: 26px 0;
+    width: 32%;
+    text-align: center;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: 900;
+    font-size: calc(10px + 14 * (100vw - 320px)/ 800);
+}

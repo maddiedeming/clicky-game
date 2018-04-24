@@ -1,0 +1,17 @@
+* {
+    font-family: sans-serif;
+}
+
+.app {
+  text-align: center;
+}
+
+.dark-purple {
+    background-color: #5138a1;
+    color: white;
+}
+
+.light-purple {
+    background-color: #6956af;
+    color: white;
+}

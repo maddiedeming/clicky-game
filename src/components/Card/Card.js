@@ -1,0 +1,8 @@
+import React from "react";
+import "./Card.css";
+
+const Card = props => (
+    <div className="click-item"></div>
+);
+
+export default Card;
