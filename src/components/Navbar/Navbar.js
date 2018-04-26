@@ -1,12 +1,13 @@
+// IMPORTS
 import React from 'react';
 import "./Navbar.css";
-
+// PROPS: Navbar
 const Navbar = props => (
-        <nav className="navbar dark-purple">
-            <a className="navbar-brand" href="/">Clicky Game</a>
-            <a>Click an image to begin!</a>
-            <a className="scores">Score: {props.score} | Top Score: {props.topScore}</a>
-        </nav>
+    <nav className="navbar light-yellow">
+        <div className="">Score: {props.score}</div>
+        <div className="burger-image"></div>
+        <div className="">Top Score: {props.topScore}</div>
+    </nav>
 )
-
+// EXPORT DEFAULT: Navbar
 export default Navbar;

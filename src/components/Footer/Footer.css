@@ -2,6 +2,7 @@
     height: 100px;
     position: relative;
     overflow: auto;
+    
 }
 
 .bottom {
@@ -11,9 +12,6 @@
     right: 0;
     padding: 8px;
     font-weight: 600;
-    text-align: left;
-}
-
-.fa-react {
-    color: #6bbce6;
+    color: white;
+    text-align: center;
 }

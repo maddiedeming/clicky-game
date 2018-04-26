@@ -1,22 +1,11 @@
+// IMPORTS
 import React from 'react';
 import "./Main.css";
-import Card from '../../components/Card/Card';
-
+// PROPS: Main
 const Main = props => (
-        <main className="container">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-        </main>
+    <main className="container">
+        {props.children}
+    </main>
 )
-
+// EXPORT DEFAULT: Main
 export default Main;
