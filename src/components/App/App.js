@@ -80,7 +80,7 @@ class App extends Component{
                     url={this.state.soundURL} 
                     playStatus={this.state.soundStatus} 
                     playPosition={this.state.soundPosition}
-                />;
+                />
                 <Footer/>
             </div>
         );
