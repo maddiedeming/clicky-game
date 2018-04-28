@@ -21,7 +21,9 @@ class App extends Component{
         selected: [],
         soundURL: "",
         soundPosition: 0,
-        soundStatus: Sound.status.PAUSED
+        soundStatus: Sound.status.PAUSED,
+        shake: "",
+        message: "Select an image to begin!"
     };
 // ON CLICK: SHUFFLE CARDS
     shuffle = id => {
@@ -41,10 +43,26 @@ class App extends Component{
             this.state.selected.push(id);
             let newScore = this.state.score + 1;
             this.setState({score: newScore});
-            if(newScore > this.state.topScore){
+            if(newScore === 12){
+                this.setState({
+                    score: 0,
+                    selected: [],
+                    topScore: newScore, 
+                    soundURL: soundCorrect,
+                    message: "You win!"
+                });
+            }
+            else if(newScore > this.state.topScore){
                 this.setState({
                     topScore: newScore, 
-                    soundURL: soundCorrect
+                    soundURL: soundCorrect,
+                    message: "You guessed correctly!"
+                });
+            }
+            else{
+                this.setState({
+                    soundURL: soundCorrect,
+                    message: "You guessed correctly!"
                 });
             }
         }
@@ -52,20 +70,26 @@ class App extends Component{
             this.setState({
                 score: 0,
                 selected: [], 
-                soundURL: soundIncorrect
+                soundURL: soundIncorrect,
+                shake: "incorrect",
+                message: "You guessed incorrectly!"
             });
+            setTimeout(function(){ 
+                this.setState({ shake: "" }); 
+            }.bind(this), 1000);
         }
     };
 // RENDER 
     render(){
         return(
             <div className="app">
-                <Navbar 
+                <Navbar
+                    message={this.state.message} 
                     score={this.state.score} 
                     topScore={this.state.topScore} 
                 />
                 <Header/>
-                <Main>
+                <Main shake={this.state.shake}>
                     {this.state.cards.map((cards,i) => (
                         <Card 
                             id={cards.id} 

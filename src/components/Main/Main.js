@@ -3,7 +3,7 @@ import React from 'react';
 import "./Main.css";
 // PROPS: Main
 const Main = props => (
-    <main className="container">
+    <main className={`container ${props.shake}`}>
         {props.children}
     </main>
 )

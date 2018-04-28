@@ -4,9 +4,9 @@ import "./Navbar.css";
 // PROPS: Navbar
 const Navbar = props => (
     <nav className="navbar light-yellow">
-        <div className="">Score: {props.score}</div>
         <div className="burger-image"></div>
-        <div className="">Top Score: {props.topScore}</div>
+        <div className="message">{props.message}</div>
+        <div>Score: {props.score} | Top Score: {props.topScore}</div>
     </nav>
 )
 // EXPORT DEFAULT: Navbar
