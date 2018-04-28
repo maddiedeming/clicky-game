@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 125px;
+    padding-right: 125px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 90%;
+}
+
+.incorrect {
+  animation: shake 0.82s;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+  
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-20px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(20px, 0, 0);
+  }
+}

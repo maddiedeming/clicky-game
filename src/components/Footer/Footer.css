@@ -1,0 +1,21 @@
+a,a:hover {
+    color: white;
+}
+
+.footer {
+    height: 100px;
+    position: relative;
+    overflow: auto;
+    
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
