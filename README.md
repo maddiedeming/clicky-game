@@ -25,5 +25,5 @@ npm install
   - [x] The user's score should be reset to 0 if they click the same image more than once.
 - [x] Every time an image is clicked, the images rendered to the page should shuffle themselves in a random order.
 - [x] Once the user's score is reset after an incorrect guess, the game should restart.
-- [ ] When complete, the application should be deployed to Github Pages. 
-  - [ ] See the README generated with Create React App for instructions on deploying the application to Github Pages.
+- [x] When complete, the application should be deployed to Github Pages. 
+  - [x] See the README generated with Create React App for instructions on deploying the application to Github Pages.
