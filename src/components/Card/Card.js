@@ -4,7 +4,7 @@ import "./Card.css";
 // PROPS: Card
 const Card = props => (
     <div className="click-item neutral" onClick = {() => { props.increment(props.id); props.shuffle(props.id); }}>
-        <img src={props.image}/>
+        <img className="card-image" src={props.image} alt={props.name}/>
     </div>
 );
 // EXPORT DEFAULT: Card

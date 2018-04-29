@@ -1,8 +1,8 @@
-# [clicky-game](https://maddiedeming.github.io/clicky-game/)
+# [clicky-game]()
 ## Overview
 For this assignment, you'll create a memory game with React. This assignment will require you to break up your application's UI into components, manage component state, and respond to user events.
 ## Dependencies
-* [create-react-app](https://github.com/facebook/create-react-app)
+* Created with [create-react-app](https://github.com/facebook/create-react-app)
   * react
   * react-dom
   * react-scripts

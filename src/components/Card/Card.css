@@ -18,7 +18,7 @@
     transition: .1s;
 }
 
-img {
+.card-image {
     max-height: 160px;
     max-width: 160px;
 }

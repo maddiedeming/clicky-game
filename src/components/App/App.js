@@ -2,12 +2,12 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
 import './App.css';
-import Navbar from '../Navbar/Navbar.js';
 import Header from '../Header/Header.js';
+import Alerts from '../Alerts/Alerts.js';
+import Score from '../Score/Score.js';
 import Main from '../Main/Main.js';
 import Footer from '../Footer/Footer.js';
 import Card from '../Card/Card.js';
-////////////////////////////////////////////////////////////
 import cards from '../../assets/json/cards.json';
 import soundCorrect from '../../assets/sounds/alright.mp3';
 import soundIncorrect from '../../assets/sounds/omg.mp3';
@@ -23,7 +23,10 @@ class App extends Component{
         soundPosition: 0,
         soundStatus: Sound.status.PAUSED,
         shake: "",
-        message: "Select an image to begin!"
+        message1: "Select an image to begin!",
+        message2: "",
+        alertType: "info",
+        topScoreType: "info"
     };
 // ON CLICK: SHUFFLE CARDS
     shuffle = id => {
@@ -49,20 +52,28 @@ class App extends Component{
                     selected: [],
                     topScore: newScore, 
                     soundURL: soundCorrect,
-                    message: "You win!"
+                    message1: "You win!",
+                    message2: "",
+                    alertType: "success"
                 });
             }
             else if(newScore > this.state.topScore){
                 this.setState({
                     topScore: newScore, 
                     soundURL: soundCorrect,
-                    message: "You guessed correctly!"
+                    message1: "YAS!",
+                    message2: "You guessed correctly!",
+                    alertType: "success",
+                    topScoreType: "success"
                 });
             }
             else{
                 this.setState({
                     soundURL: soundCorrect,
-                    message: "You guessed correctly!"
+                    message1: "YAS!",
+                    message2: "You guessed correctly!",
+                    alertType: "success",
+                    topScoreType: "info"
                 });
             }
         }
@@ -72,7 +83,10 @@ class App extends Component{
                 selected: [], 
                 soundURL: soundIncorrect,
                 shake: "incorrect",
-                message: "You guessed incorrectly!"
+                message1: "WRONG!",
+                message2: "Start over and try again!",
+                alertType: "danger",
+                topScoreType: "info"
             });
             setTimeout(function(){ 
                 this.setState({ shake: "" }); 
@@ -83,16 +97,24 @@ class App extends Component{
     render(){
         return(
             <div className="app">
-                <Navbar
-                    message={this.state.message} 
-                    score={this.state.score} 
-                    topScore={this.state.topScore} 
-                />
                 <Header/>
+                <Alerts
+                    message1={this.state.message1}
+                    message2={this.state.message2}
+                    alertType={this.state.alertType}
+                />
+                <Score 
+                    shake={this.state.shake}
+                    score={this.state.score} 
+                    topScore={this.state.topScore}
+                    alertType={this.state.alertType}
+                    topScoreType={this.state.topScoreType}
+                />
                 <Main shake={this.state.shake}>
                     {this.state.cards.map((cards,i) => (
                         <Card 
                             id={cards.id} 
+                            name={cards.name} 
                             image={cards.image} 
                             key={i} 
                             increment={this.incrementClick} shuffle={this.shuffle}
