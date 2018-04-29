@@ -1,11 +1,25 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    padding-left: 125px;
-    padding-right: 125px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    width: 90%;
+    padding-bottom: 15px;
+    width: 75%;
+    position: relative;
+}
+
+.gif img {
+  position: absolute;
+}
+
+#louise-gif {
+  max-height: 300px;
+  top: 89.5%;
+  right: 0;
+}
+
+#linda-gif {
+  max-width: 200px;
+  top: 72%;
+  left: 1%;
 }
 
 .incorrect {
@@ -26,5 +40,15 @@
   }
   40%, 60% {
     transform: translate3d(20px, 0, 0);
+  }
+}
+
+.incorrect img{
+  display:none;
+}
+
+@media only screen and (max-width: 1300px) {
+  .gif {
+    display: none;
   }
 }
