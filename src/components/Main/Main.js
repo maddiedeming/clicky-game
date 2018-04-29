@@ -5,13 +5,13 @@ import "./Main.css";
 const Main = props => (
     <main className={`${props.shake}`}>
         <div className="gif">
-            <img id="linda-gif" src="/images/happy-dance.gif" />
+            <img id="linda-gif" src="./images/happy-dance.gif" />
         </div>
         <div className="container">
             {props.children}
         </div>
         <div className="gif">
-            <img id="louise-gif" src="/images/louise.gif" />
+            <img id="louise-gif" src="./images/louise.gif" />
         </div>
     </main>
 )
