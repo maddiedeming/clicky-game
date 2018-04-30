@@ -6,8 +6,19 @@
     position: relative;
 }
 
-.gif img {
+.gif img, .btn-link {
   position: absolute;
+}
+
+.btn-link {
+  top: 50%;
+  left: 5%;
+}
+
+.volume-icon {
+  height: 100px;
+
+  color: #5bc0de;
 }
 
 #louise-gif {
@@ -27,6 +38,19 @@
   transform: translate3d(0, 0, 0);
   perspective: 1000px;
 }
+
+.off {
+  display: block;
+}
+
+.on {
+  display: none;
+}
+
+/* .btn-link, .volume-icon {
+  position: absolute;
+  left: 5%;
+} */
   
 @keyframes shake {
   10%, 90% {

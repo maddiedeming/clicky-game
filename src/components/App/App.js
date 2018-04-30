@@ -11,6 +11,7 @@ import Card from '../Card/Card.js';
 import cards from '../../assets/json/cards.json';
 import soundCorrect from '../../assets/sounds/alright.mp3';
 import soundIncorrect from '../../assets/sounds/omg.mp3';
+import theme from '../../assets/sounds/theme.mp3';
 // CLASS: App
 class App extends Component{
 // STATE    
@@ -19,14 +20,15 @@ class App extends Component{
         score: 0,
         topScore: 0,
         selected: [],
-        soundURL: "",
+        soundURL: theme,
         soundPosition: 0,
-        soundStatus: Sound.status.PAUSED,
+        soundStatus: Sound.status.PLAYING,
         shake: "",
         message1: "Select an image to begin!",
         message2: "",
         alertType: "info",
-        topScoreType: "info"
+        topScoreType: "info",
+        volume: "on"
     };
 // ON CLICK: SHUFFLE CARDS
     shuffle = id => {
@@ -37,11 +39,27 @@ class App extends Component{
             )
         })
     }
+    // ON CLICK: TURN ON/OFF VOLUME
+    volumeClick = () => {
+        if(this.state.volume == "off"){
+            this.setState({ 
+                volume: "on",
+                soundStatus: Sound.status.PLAYING
+            });
+        }
+        else{
+            this.setState({ 
+                volume: "off",
+                soundStatus: Sound.status.PAUSED,
+                soundURL: theme
+            });
+            
+        }
+    };
 // ON CLICK: INCREMENT COUNT ON CARD
     incrementClick = id => {
         let ids = this.state.selected
         const incorrect = ids.includes(id);
-        this.setState({soundPosition: 0, soundStatus: Sound.status.PLAYING,soundURL: ""});
         if(!incorrect){
             this.state.selected.push(id);
             let newScore = this.state.score + 1;
@@ -50,44 +68,68 @@ class App extends Component{
                 this.setState({
                     score: 0,
                     selected: [],
-                    topScore: newScore, 
-                    soundURL: soundCorrect,
+                    topScore: newScore,
                     message1: "You win!",
                     message2: "",
                     alertType: "success"
                 });
+                if(this.state.volume === "on"){
+                    this.setState({ 
+                        soundStatus: Sound.status.PLAYING,
+                        soundPosition: 0,
+                        soundURL: soundCorrect
+                    });
+                }
             }
             else if(newScore > this.state.topScore){
                 this.setState({
                     topScore: newScore, 
-                    soundURL: soundCorrect,
                     message1: "YAS!",
                     message2: "You guessed correctly!",
                     alertType: "success",
                     topScoreType: "success"
                 });
+                if(this.state.volume === "on"){
+                    this.setState({ 
+                        soundStatus: Sound.status.PLAYING,
+                        soundPosition: 0,
+                        soundURL: soundCorrect
+                    });
+                }
             }
             else{
                 this.setState({
-                    soundURL: soundCorrect,
                     message1: "YAS!",
                     message2: "You guessed correctly!",
                     alertType: "success",
                     topScoreType: "info"
                 });
+                if(this.state.volume === "on"){
+                    this.setState({ 
+                        soundStatus: Sound.status.PLAYING,
+                        soundPosition: 0,
+                        soundURL: soundCorrect
+                    });
+                }
             }
         }
         else{
             this.setState({
                 score: 0,
                 selected: [], 
-                soundURL: soundIncorrect,
                 shake: "incorrect",
                 message1: "WRONG!",
                 message2: "Start over and try again!",
                 alertType: "danger",
                 topScoreType: "info"
             });
+            if(this.state.volume === "on"){
+                this.setState({ 
+                    soundStatus: Sound.status.PLAYING,
+                    soundPosition: 0,
+                    soundURL: soundIncorrect
+                });
+            }
             setTimeout(function(){ 
                 this.setState({ shake: "" }); 
             }.bind(this), 1000);
@@ -110,7 +152,11 @@ class App extends Component{
                     alertType={this.state.alertType}
                     topScoreType={this.state.topScoreType}
                 />
-                <Main shake={this.state.shake}>
+                <Main 
+                    shake={this.state.shake}
+                    volumeOn={this.state.volume}
+                    volume={this.volumeClick}
+                >
                     {this.state.cards.map((cards,i) => (
                         <Card 
                             id={cards.id} 
